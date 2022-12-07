@@ -1,0 +1,1 @@
+const countEl = document.getElementById('count')

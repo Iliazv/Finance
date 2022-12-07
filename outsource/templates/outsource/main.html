@@ -1,0 +1,479 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'outsource/main_styles.css' %}">
+    <script type="text/javascript" src="{% static 'outsource/popup.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'outsource/video.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'outsource/drop_block.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{% static 'outsource/js/scroll.js' %}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+
+
+    <link rel="shortcut icon" href="{% static 'outsource/images/favicon.ico' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Финансовый Отчет</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="container">
+                    <navbar class="head">
+                        <div class="top__row">
+                            <div class="top__logotype">
+                                <a href="{% url 'main' %}" class="top__link"><img src = "{% static '../static/outsource/images/logo.png' %}"/ class="top__logo-style"></a>
+                                <div class="top__name"><p class="top__style_1">Финансовый</p> отчет</div>
+                            </div>
+                            <div class="top__nav">
+                                <ul class="top__menu">
+                                    <li><a href="#case" class="top__link">Кейсы</a></li>
+                                    <li><a href="#feedback" class="top__link">Отзывы</a></li>
+                                    <li><a href="#contacts" class="top__link">Контакты</a></li>
+                                </ul>
+                            </div>
+                            <div class="top__phone">
+                                <a href="tel:+74951234567" class="top__link">+7 (495) 123-45-67</a>
+                            </div>
+                        </div>
+                    </navbar>
+                </div>
+            </div>
+
+            <div class="welcome">
+                <div class="container">
+                    <div class="welcome__block">
+                        <div class="welcome__text">
+                            <div class="welcome__title">
+                                Аутсорсинг услуги оптимизации финансов
+                            </div>
+                            <div class="welcome__flex">
+                                <div class="welcome__item">
+                                    <div class="welcome__number">1</div>
+                                    <div class="welcome__info">Мы поможем вам оптимизировать ваши расходы и увеличить доход опытным путем</div>
+                                </div>
+                                <div class="welcome__item">
+                                    <div class="welcome__number welcome__number_2">2</div>
+                                    <div class="welcome__info">Мы поможем вам оптимизировать ваши расходы и увеличить доход опытным путем</div>
+                                </div>
+                                <div class="welcome__item">
+                                    <div class="welcome__number welcome__number_3">3</div>
+                                    <div class="welcome__info">Мы поможем вам оптимизировать ваши расходы и увеличить доход опытным путем</div>
+                                </div>
+                                <div class="welcome__item">
+                                    <button data-modal-target="#modal" class="welcome__button">Начать работу</button>
+                                    <div class="modal" id="modal">
+                                        <div class="modal-header">
+                                            <div class="title">Запись на оказание услуги</div>
+                                            <button data-close-button class="close-button">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{% url 'form_service' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="FIO" placeholder="Ваше ФИО*">
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="phone" placeholder="Номер телефона">
+                                                    <div class="modal-info">Для связи с вами напрямую</div>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="address" placeholder="Почтовый адрес">
+                                                    <div class="modal-info">Связь через электронную почту</div>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input id="highload1" class="modal-checkbox" name="agreement" type="checkbox" required>
+                                                    <label for="highload1" class="modal-conditions">Я принимаю условия <span class="modal-link">обработки данных</span></label>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <button data-modal-target="#modal" class="welcome__button">Записаться</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="welcome__image">
+                            <img src = "{% static '../static/outsource/images/man.webp' %}"/ class="welcome__image-style">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class = 'anchor' id="case"></a>
+            <div class="feed">
+                <div class="container">
+                    <div class="feed__box">
+                        <div class="feed__box">
+                            <div class="feed__title">
+                                Управляйте своим бизнесом<br> более эффективно</div>
+                            </div>
+                            <div class="feed__label">
+                                С помощью нашей команды из финансистов вы сможете увеличить <br>прибыль и развить капитал
+                            </div>
+                            <div class="feed__list">
+                                <div class="feed__case">
+                                    <input type="button" value="Все услуги" onmousedown="DropBlock1()" class="feed__button highlight" id="feed__block_1">
+                                </div>
+                                <div class="feed__case">
+                                    <input type="button" value="Торговля" onmousedown="DropBlock2()" class="feed__button" id="feed__block_2">
+                                </div>
+                                <div class="feed__case">
+                                    <input type="button" value="Технологии" onmousedown="DropBlock3()" class="feed__button" id="feed__block_3">
+                                </div>
+                                <div class="feed__case">
+                                    <input type="button" value="Транспорт" onmousedown="DropBlock4()" class="feed__button" id="feed__block_4">
+                                </div>
+                            </div>
+
+                            <div id="feed__drop_1">
+                                <div class="feed__grid">
+                                    {% for case in cases %}
+                                            <a href="{% url 'case_page' arg=case.id %}" class="feed__ceil">
+                                                <div class="feed__person">
+                                                    <div class="feed__image">
+                                                        <img src="{{ case.author_image.url }}" alt="" class="feed__thumb">
+                                                    </div>
+                                                    <div class="feed__information">
+                                                        <div class="feed__role">
+                                                            {{ case.role }}
+                                                        </div>
+                                                        <div class="feed__author">
+                                                            {{ case.author }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed__service">
+                                                    <div class="feed__area">{{ case.sector }}</div>
+                                                    <div class="feed__name">{{ case.name }}</div>
+                                                    <div class="feed__progress">{{ case.progress }} <span class="feed__write">  Читать дальше...</span></div>
+                                                    
+                                                </div>
+                                                
+                                            </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div id="feed__drop_2">
+                                <div class="feed__grid">
+                                    {% for case in cases %}
+                                        {% if case.sector == 'Торговля' %}
+                                            <a href="{% url 'case_page' arg=case.id %}" class="feed__ceil">
+                                                <div class="feed__person">
+                                                    <div class="feed__image">
+                                                        <img src="{{ case.author_image.url }}" alt="" class="feed__thumb">
+                                                    </div>
+                                                    <div class="feed__information">
+                                                        <div class="feed__role">
+                                                            {{ case.role }}
+                                                        </div>
+                                                        <div class="feed__author">
+                                                            {{ case.author }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed__service">
+                                                    <div class="feed__area">{{ case.sector }}</div>
+                                                    <div class="feed__name">{{ case.name }}</div>
+                                                    <div class="feed__progress">{{ case.progress }}</div>
+                                                    <span class="feed__write">Читать дальше...</span>
+                                                </div>
+                                            </a>
+                                        {% endif %}                     
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div id="feed__drop_3">
+                                <div class="feed__grid">
+                                    {% for case in cases %}
+                                        {% if case.sector == 'Технологии' %}
+                                            <a href="{% url 'case_page' arg=case.id %}" class="feed__ceil">
+                                                <div class="feed__person">
+                                                    <div class="feed__image">
+                                                        <img src="{{ case.author_image.url }}" alt="" class="feed__thumb">
+                                                    </div>
+                                                    <div class="feed__information">
+                                                        <div class="feed__role">
+                                                            {{ case.role }}
+                                                        </div>
+                                                        <div class="feed__author">
+                                                            {{ case.author }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed__service">
+                                                    <div class="feed__area">{{ case.sector }}</div>
+                                                    <div class="feed__name">{{ case.name }}</div>
+                                                    <div class="feed__progress">{{ case.progress }}</div>
+                                                    <span class="feed__write">Читать дальше...</span>
+                                                </div>
+                                            </a>
+                                        {% endif %}                     
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div id="feed__drop_4">
+                                <div class="feed__grid">
+                                    {% for case in cases %}
+                                        {% if case.sector == 'Транспорт' %}
+                                            <a href="{% url 'case_page' arg=case.id %}" class="feed__ceil">
+                                                <div class="feed__person">
+                                                    <div class="feed__image">
+                                                        <img src="{{ case.author_image.url }}" alt="" class="feed__thumb">
+                                                    </div>
+                                                    <div class="feed__information">
+                                                        <div class="feed__role">
+                                                            {{ case.role }}
+                                                        </div>
+                                                        <div class="feed__author">
+                                                            {{ case.author }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed__service">
+                                                    <div class="feed__area">{{ case.sector }}</div>
+                                                    <div class="feed__name">{{ case.name }}</div>
+                                                    <div class="feed__progress">{{ case.progress }}</div>
+                                                    <span class="feed__write">Читать дальше...</span>
+                                                </div>
+                                            </a>
+                                        {% endif %}                     
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="feed__all">
+                                <form action="{% url 'all_cases' %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="feed__allbutton">Посмотреть все услуги</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report">
+                <div class="container">
+                    <div class="report__slide">
+                        <div class="report__text">
+                            <div class="report__title">
+                                Удобный финансовый отчет
+                            </div>
+                            <div class="report__info">
+                                Отчеты, графики, диаграммы, таблицы составленные нашими специалистами помогут вашему принести крупную прибыль вашему бизнесу
+                            </div>
+                        </div>
+
+                        <div class="report__image">
+                            <img src = "{% static '../static/outsource/images/graphic.jpg' %}"/ class="report__image-style">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="live">
+                <div class="container">
+                    <div class="live__card">
+                        <div class="live__text">
+                            <div class="live__title">
+                                Онлайн-вебинар с финансовым директором из нашей компании <img src = "{% static '../static/outsource/images/lv.png' %}"/ class="live__icon-style">
+                            </div>
+                            <div class="live__info">
+                                На вебинаре наш финансовый директор расскажет и продемонстрирует как правильно оптимизировать компании в РФ, а также ответит на все вопросы
+                            </div>
+
+                            <div class="live__order">
+                                <button data-modal-target="#modal2" class="live__button">Записаться</button>
+                                    <div class="modal" id="modal2">
+                                        <div class="modal-header">
+                                            <div class="title">Запись на онлайн-вебинар</div>
+                                            <button data-close-button class="close-button">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{% url 'form_vebinar' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="FIO_2" placeholder="Ваше ФИО*">
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="phone_2" placeholder="Номер телефона">
+                                                    <div class="modal-info">Для связи с вами напрямую</div>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input type="text" class="modal-field" name="address_2" placeholder="Почтовый адрес">
+                                                    <div class="modal-info">Связь через электронную почту</div>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <input id="highload1" class="modal-checkbox" name="agreement" type="checkbox" required>
+                                                    <label for="highload1" class="modal-conditions">Я принимаю условия <span class="modal-link">обработки данных</span></label>
+                                                </div>
+                                                <div class="modal-block">
+                                                    <button data-modal-target="#modal2" class="live__button">Записаться</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="overlay2"></div>
+                            </div>
+                        </div>
+                        <div class="live__image">
+                            <img src = "{% static '../static/outsource/images/financist.png' %}"/ class="live__image-style">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map">
+                <div class="container">
+                    <div class="map__block">    
+                        <div class="div1">   
+                            <iframe src="https://www.google.com/maps/d/embed?mid=16p26T_k-_4R705dYlmuSG0fWNkG6-i4&ehbc=2E312F" class="map__style"></iframe>
+                        </div>  
+                        <div class="map__right">
+                            <div class="map__text">
+                                Более 100 клиентов у нашей компании по всей России!
+                            </div>
+                            <div class="map__collaborate">
+                                С нами сотрудничает множество компаний из разных стран
+                            </div>
+                            <div class="map__gif">
+                                <img src = "{% static '../static/outsource/images/comp.gif' %}"/ class="map__gif-style">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video">
+                <a class = 'anchor' id="feedback"></a>
+                <div class="container">
+                    <div class="video__title">Отзывы наших клиентов</div>
+                    <div class="container__videos">
+                        <div class="video__section">
+                            <div class="video__block">
+                                <a href="#videostory" class="button more" id="videolink">
+                                    <div class="video__frame">
+                                        <div class="video__black">
+                                            <img src = "{% static '../static/outsource/images/1.png' %}"/ class="video__image">
+                                            <span class="video__author">Егор Литвинов</span>
+                                            <img src = "{% static '../static/outsource/images/play3.png' %}"/ class="video__play">
+                                        </div>
+                                    </div>         
+                                </a>
+                                <div id="videostory" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+                                    <iframe class="video__active" src="https://www.youtube.com/embed/x9n0KfFZk5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted></iframe>
+                                </div>
+                            </div>
+
+                            <div class="video__block">
+                                <a href="#videostory1" class="button more" id="videolink1">
+                                    <div class="video__frame">
+                                        <div class="video__black">
+                                            <img src = "{% static '../static/outsource/images/2.png' %}"/ class="video__image">
+                                        
+                                            <span class="video__author">Федор Паномарев</span>
+                                            <img src = "{% static '../static/outsource/images/play3.png' %}"/ class="video__play">
+                                        </div>
+                                    </div>         
+                                </a>
+                                <div id="videostory1" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+                                    <iframe class="video__active" src="https://www.youtube.com/embed/JFysu6j8jEA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted></iframe>
+                                </div>
+                            </div>
+
+
+                            <div class="video__block">
+                                <a href="#videostory2" class="button more" id="videolink2">
+                                    <div class="video__frame">
+                                        <div class="video__black">
+                                            <img src = "{% static '../static/outsource/images/feedback1.png' %}"/ class="video__image">
+                                        
+                                            <span class="video__author">Евгений Есипов</span>
+                                            <img src = "{% static '../static/outsource/images/play3.png' %}"/ class="video__play">
+                                        </div>
+                                    </div>         
+                                </a>
+                                <div id="videostory2" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+                                    <iframe class="video__active" src="https://www.youtube.com/embed/1bALfdFJHvA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted></iframe>
+                                </div>
+                            </div>
+
+                            <div class="video__block">
+                                <a href="#videostory3" class="button more" id="videolink3">
+                                    <div class="video__frame">
+                                        <div class="video__black">
+                                            <img src = "{% static '../static/outsource/images/3.png' %}"/ class="video__image">
+                                        
+                                            <span class="video__author">Олег Долгин</span>
+                                            <img src = "{% static '../static/outsource/images/play3.png' %}"/ class="video__play">
+                                        </div>
+                                    </div>         
+                                </a>
+                                <div id="videostory3" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+                                    <iframe class="video__active" src="https://www.youtube.com/embed/8Ocp72_rDM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <a class = 'anchor' id="contacts"></a>
+        <div class="footer">
+            <div class="container">
+                <div class="footer__ceiling">
+                    <div class="footer__call">
+                        <div class="footer__split">
+                            <div class="footer__label">Связаться по телефону</div>
+                            <a href="tel:+74951234567" class="footer__phone">+7 (495) 123-45-67</a>
+                        </div>
+                        <div class="footer__split">
+                            <div class="footer__label">Связаться через почтовый адрес</div>
+                            <a href="tel:+74951234567" class="footer__phone">finance-report@gmail.com</a>
+                        </div>
+
+                        <div class="footer__networks">
+                            <a href="https://www.youtube.com/"><img src="{% static '../static/outsource/images/youtube.png' %}" alt="" class="footer__network"></a>
+                            <a href="https://www.facebook.com/"><img src="{% static '../static/outsource/images/facebook.png' %}" alt="" class="footer__network"></a>
+                            <a href="https://www.instagram.com/"><img src="{% static '../static/outsource/images/instagram.png' %}" alt="" class="footer__network"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__floor">
+                    <div class="footer__row">
+                        <div class="footer__logotype">
+                            <a href="{% url 'main' %}" class="footer__link"><img src = "{% static '../static/outsource/images/logo.png' %}"/ class="footer__logo-style"></a>
+                            <div class="footer__name"><p class="footer__style_1">Финансовый</p> отчет</div>
+                        </div>
+                        <div class="footer__politics">
+                            <a href="{% url 'politics' %}" class="footer__link" target="_blank">Политика конфидициальности</a>
+                        </div>
+                        <div class="footer__politics">
+                            © Финансовый отчет
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

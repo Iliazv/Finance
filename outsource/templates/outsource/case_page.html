@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'outsource/main_styles.css' %}">
+    <script type="text/javascript" src="{% static 'outsource/popup.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'outsource/video.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'outsource/drop_block.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'outsource/counter.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{% static 'outsource/js/scroll.js' %}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+
+
+    <link rel="shortcut icon" href="{% static 'outsource/images/favicon.ico' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Финансовый Отчет</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="container">
+                    <navbar class="head">
+                        <div class="top__row">
+                            <div class="top__logotype">
+                                <a href="{% url 'main' %}" class="top__link"><img src = "{% static '../static/outsource/images/logo.png' %}"/ class="top__logo-style"></a>
+                                <div class="top__name"><p class="top__style_1">Финансовый</p> отчет</div>
+                            </div>
+                            <div class="top__nav">
+                                <ul class="top__menu">
+                                    <a href="{% url 'main' %}" class="top__link">Главная страница</a>
+                                </ul>
+                            </div>
+                            <div class="top__phone">
+                                <a href="tel:+74951234567" class="top__link">+7 (495) 123-45-67</a>
+                            </div>
+                        </div>
+                    </navbar>
+                </div>
+            </div>
+
+            <div class="case">
+                <div class="container">
+                    <div class="case__section">
+                        <div class="case__date">{{ case.date }}</div>
+                        <div class="case__name">{{ case.name }}</div>
+                        <div class="case__row">
+                            <div class="case__picture">
+                                <div class="case__image">
+                                    <img src="{{ case.author_image.url }}" alt="" class="feed__thumb feed__thumb_square">
+                                </div>
+                                <div class="case__information">
+                                    <div class="case__role">
+                                        {{ case.role }}
+                                    </div>
+                                    <div class="case__author">
+                                        {{ case.author }}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="case__counter">
+                                <div class="case__long">
+                                    <img src = "{% static '../static/outsource/images/time.png' %}"/ class="feed__icon feed__icon_clock"> 
+                                    <span class="">{{ case.long }}</span>
+                                </div>
+                                <div class="case__views">
+                                    <img src = "{% static '../static/outsource/images/eye.png' %}"/ class="feed__icon feed__icon_eye"> {{ case.total_views }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paragraps">
+                <div class="container">
+                    <div class="paragraphs__list">
+                        {% for paragraph in paragraphs %}
+                            <div class="paragraphs__paragraph">
+                                <div class="paragraphs__title">{{ paragraph.title }}</div>
+                                <div class="paragraphs__text">{{ paragraph.information }}</div>
+                                {% if paragraph.image %}
+                                    <img src="{{ paragraph.image.url }}" alt="" class="feed__diagram">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+
+        <a class = 'anchor' id="contacts"></a>
+        <div class="footer">
+            <div class="container">
+                <div class="footer__ceiling">
+                    <div class="footer__call">
+                        <div class="footer__split">
+                            <div class="footer__label">Связаться по телефону</div>
+                            <a href="tel:+74951234567" class="footer__phone">+7 (495) 123-45-67</a>
+                        </div>
+                        <div class="footer__split">
+                            <div class="footer__label">Связаться через почтовый адрес</div>
+                            <a href="tel:+74951234567" class="footer__phone">finance-report@gmail.com</a>
+                        </div>
+
+
+                        <div class="footer__networks">
+                            <a href="https://www.youtube.com/"><img src="{% static '../static/outsource/images/youtube.png' %}" alt="" class="footer__network"></a>
+                            <a href="https://www.facebook.com/"><img src="{% static '../static/outsource/images/facebook.png' %}" alt="" class="footer__network"></a>
+                            <a href="https://www.instagram.com/"><img src="{% static '../static/outsource/images/instagram.png' %}" alt="" class="footer__network"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__floor">
+                    <div class="footer__row">
+                        <div class="footer__logotype">
+                            <a href="{% url 'main' %}" class="footer__link"><img src = "{% static '../static/outsource/images/logo.png' %}"/ class="footer__logo-style"></a>
+                            <div class="footer__name"><p class="footer__style_1">Финансовый</p> отчет</div>
+                        </div>
+                        <div class="footer__politics">
+                            <a href="{% url 'politics' %}" class="footer__link" target="_blank">Политика конфидициальности</a>
+                        </div>
+                        <div class="footer__politics">
+                            © Финансовый отчет
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
