@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import ServiceMessage, VebinarMessage, Case, Paragraph, Image, Ip
 
 #qsl
-
 admin.site.register(ServiceMessage)
 admin.site.register(VebinarMessage)
 admin.site.register(Case)
